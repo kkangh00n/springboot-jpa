@@ -1,7 +1,7 @@
-package com.example.springbootjpa.domain;
+package com.example.springbootjpa.domain.customer;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import com.example.springbootjpa.domain.customer.Customer;
+import com.example.springbootjpa.domain.customer.CustomerRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

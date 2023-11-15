@@ -1,5 +1,7 @@
 package com.example.springbootjpa.domain;
 
+import com.example.springbootjpa.domain.customer.Customer;
+import com.example.springbootjpa.domain.customer.CustomerRepository;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
