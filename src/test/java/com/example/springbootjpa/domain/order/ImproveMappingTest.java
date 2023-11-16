@@ -1,5 +1,7 @@
 package com.example.springbootjpa.domain.order;
 
+import com.example.springbootjpa.domain.parent.Parent;
+import com.example.springbootjpa.domain.parent.ParentId;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -53,5 +55,25 @@ public class ImproveMappingTest {
 
         em.persist(order);
         transaction.commit();
+    }
+
+    @Test
+    void id_test() {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+
+        Parent parent = new Parent();
+        parent.setId1("id1");
+        parent.setId2("id2");
+
+        em.persist(parent);
+        transaction.commit();
+
+        em.clear();
+        //조회
+        Parent findParent = em.find(Parent.class, new ParentId("id1", "id2"));
+        log.info("{} {}", parent.getId1(), parent.getId2());
     }
 }
