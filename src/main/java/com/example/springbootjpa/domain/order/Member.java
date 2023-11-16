@@ -16,7 +16,7 @@ import lombok.Setter;
 @Table(name = "member")
 @Getter
 @Setter
-public class Member {
+public class Member extends BaseEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

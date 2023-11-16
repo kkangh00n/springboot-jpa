@@ -3,6 +3,8 @@ package com.example.springbootjpa.domain.order;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
+import java.time.LocalDateTime;
+import java.util.UUID;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,27 @@ public class ImproveMappingTest {
 
         em.persist(food);
 
+        transaction.commit();
+    }
+
+    @Test
+    void mapped_super_class_test() {
+        EntityManager em = emf.createEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+
+        transaction.begin();
+
+        Order order = new Order();
+        order.setUuid(UUID.randomUUID().toString());
+        order.setOrderStatus(OrderStatus.OPENED);
+        order.setMemo("---");
+        order.setOrderDateTime(LocalDateTime.now());
+
+        //
+        order.setCreatedBy("kkangh00n");
+        order.setCreatedAt(LocalDateTime.now());
+
+        em.persist(order);
         transaction.commit();
     }
 }
