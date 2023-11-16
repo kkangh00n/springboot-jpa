@@ -13,10 +13,10 @@ import org.springframework.orm.jpa.vendor.AbstractJpaVendorAdapter;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
-@Configuration
+//@Configuration
 public class DataSourceConfig {
 
-    @Bean
+//    @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.h2.Driver");
@@ -27,7 +27,7 @@ public class DataSourceConfig {
         return dataSource;
     }
 
-    @Bean
+//    @Bean
     public JpaVendorAdapter jpaVendorAdapter(JpaProperties jpaProperties){
         AbstractJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
         jpaVendorAdapter.setShowSql(jpaProperties.isShowSql());
@@ -37,7 +37,7 @@ public class DataSourceConfig {
         return jpaVendorAdapter;
     }
 
-    @Bean
+//    @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter, JpaProperties jpaProperties){
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(dataSource);
@@ -50,7 +50,7 @@ public class DataSourceConfig {
         return em;
     }
 
-    @Bean
+//    @Bean
     public PlatformTransactionManager transactionManager(LocalContainerEntityManagerFactoryBean entityManagerFactory){
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory.getObject());
