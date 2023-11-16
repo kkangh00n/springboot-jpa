@@ -65,8 +65,7 @@ public class ImproveMappingTest {
         transaction.begin();
 
         Parent parent = new Parent();
-        parent.setId1("id1");
-        parent.setId2("id2");
+        parent.setId(new ParentId("id1", "id2"));
 
         em.persist(parent);
         transaction.commit();
@@ -74,6 +73,6 @@ public class ImproveMappingTest {
         em.clear();
         //조회
         Parent findParent = em.find(Parent.class, new ParentId("id1", "id2"));
-        log.info("{} {}", parent.getId1(), parent.getId2());
+        log.info("{} {}", parent.getId().getId1(), parent.getId().getId2());
     }
 }
